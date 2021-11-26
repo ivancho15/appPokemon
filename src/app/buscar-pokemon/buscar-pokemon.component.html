@@ -1,0 +1,49 @@
+<div class="input-group mb-3">
+    <form (ngSubmit)="onSubmit()" #formpokemon="ngForm">
+        <input  id="buscar"
+        name="buscar"
+        class="form-control"
+        type="text" 
+        placeholder="Introduzca el Nombre del Pokemon" 
+        [(ngModel)]="this.nombrePokemon" 
+        (keydown.enter)="onEnter($event)"
+        required
+        >
+        <button class="btn btn-outline-secondary" 
+                type="submit" id="button-addon2" 
+                (click)="this.buscarPokemon(this.nombrePokemon)">Buscar</button>
+    </form>
+</div>
+<div class="container" *ngIf="pokemonesExist; else sinresultado">
+    <table class="table table-bordered table-striped">
+        <thead>
+            <tr class="filters">
+                <th>Nombre</th>
+                <th>Imagen</th>
+                <th>Tipo</th>
+                <th>Ataque</th>
+                <th>Defensa</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let pokemon of pokemones">
+                <td>{{pokemon.name}}</td>
+                <td><div><img src={{pokemon.image}} width= 90px height= 70px></div></td>
+                <td>{{pokemon.type}}</td>
+                <td>{{pokemon.attack}}</td>
+                <td>{{pokemon.defense}}</td>
+                <td>
+                    <button type="button" class="bt btn-success" > Editar</button> | 
+                    <button type="button" class="bt btn-danger" (click)="eliminarPokemon(pokemon.id)"> Eliminar</button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+<ng-template #sinresultado>
+    <h4 class="h4"> No hay resultados en la busqueda.</h4>
+</ng-template>
+<div clas="container" style="text-align: center;">
+    <a class="btn btn-primary float-md-center" routerLink="/agregarpokemon" id="button-addon1">Agregar Pokemon</a>
+</div>
