@@ -34,7 +34,7 @@
                 <td>{{pokemon.attack}}</td>
                 <td>{{pokemon.defense}}</td>
                 <td>
-                    <button type="button" class="bt btn-success" > Editar</button> | 
+                    <button type="button" class="bt btn-success" routerLink="/editarpokemon/{{pokemon.id}}"> Editar</button> | 
                     <button type="button" class="bt btn-danger" (click)="eliminarPokemon(pokemon.id)"> Eliminar</button>
                 </td>
             </tr>

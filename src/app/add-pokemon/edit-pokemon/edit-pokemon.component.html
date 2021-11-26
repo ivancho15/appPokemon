@@ -1,20 +1,22 @@
 <div class="row">
     <div class="col col-md"></div>
     <div class="col-10 col-md-8">
-        <h2 class="green">Añadir Pokemon</h2>
+        <h2 class="green">Editar Pokemon</h2>
         <form [formGroup]="pokemonForm" (ngSubmit)="onSubmit()">
             <div class="form-group" >
                 <label for="name">Nombre</label>
                 <input type="text"
                         class="form-control"
                         id="name"
-                        formControlName="name">                       
+                        formControlName="name"
+                        [(ngModel]="pokemon.name">                       
             </div>
             <div class="form-group">
                 <label for="type">Tipo</label>
                 <select class="form-control" 
                 id="type"
-                formControlName="type">
+                formControlName="type"
+                [(ngModel]="pokemon.type">
                 <option value="">Seleccione el Tipo</option>
                 <option *ngFor="let tipo of tipos" [value]="tipo">
                     {{tipo}}
@@ -27,6 +29,7 @@
                         class="form-control"
                         id="image"
                         formControlName="image"
+                        [(ngModel]="pokemon.image"
                         > 
                 <div *ngIf="pokemonForm.value.image"><img src={{pokemonForm.value.image}} width= 90px height= 70px> </div>
                                     
@@ -39,6 +42,7 @@
                 min="0" max="100"
                 value="0"
                 formControlName="attack"
+                [(ngModel]="pokemon.attack"
                 >               
             </div>
             <div class="form-group">
@@ -49,6 +53,7 @@
                 min="0" max="100"
                 value="0"
                 formControlName="defense"
+                zzz
                 >                  
             </div>
             <div class="form-group">
@@ -64,15 +69,16 @@
             <hr>
             <button type="submit"
                     class="btn btn-success"
-                    [disabled]="!pokemonForm.valid">Añadir Pokemon</button>
+                    [disabled]="!pokemonForm.valid">Guardar Cambios</button>
             <p class="alert alert-danger" *ngIf="!pokemonForm.valid">
                 Por favor llene todos los campos.
             </p>
             <br>
-            <a class="btn btn-warning" routerLink=" ">Volver</a>
+            <a class="btn btn-warning" routerLink="/">Volver</a>
         </form>
 
     </div>
     <div class="col col-md"></div>
 </div>
+
 

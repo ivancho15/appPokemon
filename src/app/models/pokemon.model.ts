@@ -7,7 +7,7 @@ export class Pokemon {
     public attack: number;
     public defense: number; 
     public idAuthor: number;
-    public createdAt: string;
+    public createdAt?: string;
     public updatedAt: string
 
     constructor (id: number, name: string, image: string, type: string, hp: number, attack: number, defense: number,idAuthor: number, createdAt: string, 
