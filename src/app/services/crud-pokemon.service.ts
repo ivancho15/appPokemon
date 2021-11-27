@@ -31,11 +31,11 @@ export class CrudPokemonService {
 
   getPokemonId(id$: number){
     const url = `${this.preUrl}?id=${id$}`
-    return this.http.get<Pokemon>(url)
+    return this.http.get<Pokemon[]>(url)
   }
 
   putPokemon(id$: number, pokemon:Pokemon){
-    const url = `${this.preUrl}?id=${id$}`
+    const url = `${this.preUrl + id$}`
     return this.http.put<Pokemon>(url, pokemon)
     .subscribe(data => console.log(data));
   }

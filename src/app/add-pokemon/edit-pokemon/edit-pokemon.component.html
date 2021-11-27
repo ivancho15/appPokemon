@@ -2,21 +2,23 @@
     <div class="col col-md"></div>
     <div class="col-10 col-md-8">
         <h2 class="green">Editar Pokemon</h2>
-        <form [formGroup]="pokemonForm" (ngSubmit)="onSubmit()">
+        <form  #formEdit="ngForm" (ngSubmit)="onSubmit()">
             <div class="form-group" >
                 <label for="name">Nombre</label>
                 <input type="text"
+                        id="nombre"
                         class="form-control"
-                        id="name"
-                        formControlName="name"
-                        [(ngModel]="pokemon.name">                       
+                        [(ngModel)]="this.nombrePokemon"
+                        name="nombre"
+                        required>                       
             </div>
             <div class="form-group">
                 <label for="type">Tipo</label>
                 <select class="form-control" 
                 id="type"
-                formControlName="type"
-                [(ngModel]="pokemon.type">
+                [(ngModel)]="this.tipoPokemon"
+                name="type"
+                required>
                 <option value="">Seleccione el Tipo</option>
                 <option *ngFor="let tipo of tipos" [value]="tipo">
                     {{tipo}}
@@ -28,10 +30,10 @@
                 <input type="url"
                         class="form-control"
                         id="image"
-                        formControlName="image"
-                        [(ngModel]="pokemon.image"
-                        > 
-                <div *ngIf="pokemonForm.value.image"><img src={{pokemonForm.value.image}} width= 90px height= 70px> </div>
+                        [(ngModel)]="this.imagePokemon"
+                        name="image"
+                        required> 
+                <div *ngIf="this.imagePokemon"><img src={{this.imagePokemon}} width= 90px height= 70px> </div>
                                     
             </div>
             <div class="form-group">
@@ -41,9 +43,9 @@
                 id="attack"
                 min="0" max="100"
                 value="0"
-                formControlName="attack"
-                [(ngModel]="pokemon.attack"
-                >               
+                [(ngModel)]="this.ataquePokemon" 
+                name="attack"
+                required>               
             </div>
             <div class="form-group">
                 <label for="defense">Defensa</label>
@@ -52,9 +54,9 @@
                 id="defense"
                 min="0" max="100"
                 value="0"
-                formControlName="defense"
-                zzz
-                >                  
+                [(ngModel)]="this.defensaPokemon" 
+                name="defense"
+                required>                  
             </div>
             <div class="form-group">
                 <label for="hp">HP</label>
@@ -63,14 +65,15 @@
                 id="hp"
                 min="0" max="100"
                 value="0"
-                formControlName="hp"
-                >                  
+                [(ngModel)]="this.hpPokemon" 
+                name="hp"
+                required >                  
             </div>
             <hr>
             <button type="submit"
                     class="btn btn-success"
-                    [disabled]="!pokemonForm.valid">Guardar Cambios</button>
-            <p class="alert alert-danger" *ngIf="!pokemonForm.valid">
+                    [disabled]="!formEdit.valid">Guardar Cambios</button>
+            <p class="alert alert-danger"  *ngIf="!formEdit.valid">
                 Por favor llene todos los campos.
             </p>
             <br>

@@ -24,7 +24,6 @@ export class BuscarPokemonComponent implements OnInit {
 
   async buscarPokemon(pokemonNombre: string){
     const nombre = pokemonNombre;
-    console.log(nombre);
     this._pokemonesServices.getPokemon(nombre)
       .subscribe(data => {this.pokemones = data;
         this.pokemones.length > 0 ? this.pokemonesExist = true : this.pokemonesExist = false;});
